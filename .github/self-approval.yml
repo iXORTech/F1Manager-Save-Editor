@@ -1,0 +1,11 @@
+_extends: github-settings
+
+self_approval_comments:
+  - "I self-approve!"
+  - "I self-certify!"
+
+from_author:
+  - Cubik65536
+
+apply_labels:
+  - "status:can-be-merged"
