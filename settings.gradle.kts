@@ -1,3 +1,3 @@
 
-rootProject.name = "F1Manager22-Save-Editior"
+rootProject.name = "F1Manager22-Save-Editor"
 
