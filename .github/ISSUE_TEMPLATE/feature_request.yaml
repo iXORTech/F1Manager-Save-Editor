@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an idea for RemoteMC-Core
+description: Suggest an idea for F1Manager22-Save-Editor
 title: "[Feature Request]: "
 labels: ["type:feature"]
 assignees: Cubik65536
@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to request a feature for RemoteMC-Core!
+        Thanks for taking the time to request a feature for F1Manager22-Save-Editor!
         
         > ### Important! :warning:
         > 
@@ -58,10 +58,11 @@ body:
         Please search to see if an issue related to this feature request already exists.
         
         ---------
+
   - type: checkboxes
     id: terms
     attributes:
       label: Please accept these terms
       options:
-        - label: I have searched the [existing issues](https://github.com/iXORTech/RemoteMC-Core/issues) and this has not been posted before
+        - label: I have searched the [existing issues](https://github.com/iXORTech/F1Manager22-Save-Editor/issues) and this has not been posted before
           required: true

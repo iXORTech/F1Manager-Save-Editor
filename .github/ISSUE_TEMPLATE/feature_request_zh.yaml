@@ -1,5 +1,5 @@
 name: 功能请求
-description: 为 RemoteMC-Core 提供方案或解决思路
+description: 为 F1Manager22-Save-Editor 提供方案或解决思路
 title: "[功能请求]: "
 labels: ["type:feature"]
 assignees: Cubik65536
@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        感谢您为 RemoteMC-Core 提供新的方案或解决思路！
+        感谢您为 F1Manager22-Save-Editor 提供新的方案或解决思路！
         
         > ### 重要！ :warning:
         > 
@@ -58,10 +58,11 @@ body:
         请确认是否已经有与该功能请求的 issue。
         
         ---------
+
   - type: checkboxes
     id: terms
     attributes:
       label: 请确认以下条款
       options:
-        - label: 我已经查看了[已有 issue](https://github.com/iXORTech/RemoteMC-Core/issues) 并确定没有人提交过与此功能请求相关的 issue
+        - label: 我已经查看了[已有 issue](https://github.com/iXORTech/F1Manager22-Save-Editor/issues) 并确定没有人提交过与此功能请求相关的 issue
           required: true

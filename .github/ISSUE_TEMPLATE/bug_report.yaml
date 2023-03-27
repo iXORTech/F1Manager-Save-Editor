@@ -1,5 +1,5 @@
 name: Bug report
-description: Create a report to help us improve RemoteMC-Core
+description: Create a report to help us improve F1Manager22-Save-Editor
 title: "[Bug]: "
 labels: ["type:bug"]
 assignees: Cubik65536
@@ -35,7 +35,7 @@ body:
       description: |
         A clear and concise description of what the bug is.
         Please, explain whether it's a build-time error or a runtime error.
-      value: |
+      placeholder: |
         When I do <X>, <Y> happens and I see the following error message:
         
         ```
@@ -45,8 +45,6 @@ body:
         Expected behavior:
         
         When I do <X>, <Z> should happen instead.
-      render: Markdown
-
 
   - type: textarea
     id: reproduction
@@ -57,12 +55,11 @@ body:
       description: |
         Add commands used or steps taken to reproduce the behaviour.
         Include links, references or anything else that will give us more context about the issue you are encountering.
-      value: |
+      placeholder: |
         1. Download jar from Release
         2. Set the config '...' with '...'
         3. Run the jar with `java -jar`
         4. See error
-      render: Markdown
 
   - type: textarea
     id: logs
@@ -83,14 +80,11 @@ body:
         examples:
           - **Operating System**: macOS Monterey 12.3
           - **Java Version**: Temurin-17.0.1+12
-          - **RemoteMC-Core Version (or Commit)**: 0.2.1 Beta (or bd259a6)
-          - **RemoteMC-MCDR Version (or Commit)**: 0.1.0 Beta (or 20081cd)
+          - **F1Manager22-Save-Editor Version (or Commit)**: 0.2.1 Beta (or bd259a6)
       value: |
         - **Operating System**:
         - **Java Version**:
-        - **RemoteMC-Core Version (or Commit)**:
-        - **RemoteMC-MCDR Version (or Commit)**:
-      render: Markdown
+        - **F1Manager22-Save-Editor Version (or Commit)**:
 
   - type: markdown
     attributes:
@@ -107,17 +101,18 @@ body:
         
         Please confirm you are submitting a bug report and not a usage question.
         
-        **3. Confirm this bug still exists in the newest version of RemoteMC-Core**
+        **3. Confirm this bug still exists in the newest version of F1Manager22-Save-Editor**
         
-        Please confirm that the bug still exists in the newest version (commit) of RemoteMC-Core.
+        Please confirm that the bug still exists in the newest version (commit) of F1Manager22-Save-Editor.
         
         ---------
+
   - type: checkboxes
     id: terms
     attributes:
       label: Please accept these terms
       options:
-        - label: I have searched the [existing issues](https://github.com/iXORTech/RemoteMC-Core/issues) and this has not been posted before
+        - label: I have searched the [existing issues](https://github.com/iXORTech/F1Manager22-Save-Editor/issues) and this has not been posted before
           required: true
         - label: This is a bug report
           required: true
