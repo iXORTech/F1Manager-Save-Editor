@@ -1,6 +1,8 @@
 package utils
 
 import java.io.File
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 /*
  * SaveUnpacker.kt
@@ -11,6 +13,7 @@ import java.io.File
  * Modified by Qian Qian "Cubik" on Tuesday Dec. 19.
  * - Backup prompt and backup functionality.
  * - Unpack the chunk1 data (data that is not a part of the real database) from the save file.
+ * - Unpack the database from the save file.
  */
 
 /**
@@ -27,6 +30,7 @@ class SaveUnpacker {
          * Unpack the F1 Manager save file.
          * @param save The save file to unpack.
          */
+        @OptIn(ExperimentalUnsignedTypes::class)
         fun unpackSave(save: File) {
             // Get path of the save file.
             val path = save.absolutePath
@@ -68,6 +72,52 @@ class SaveUnpacker {
             }
             val chunk1Data = saveData.sliceArray(0 until databaseOffset)
             chunk1File.writeBytes(chunk1Data)
+
+            // Get ZLIB size.
+            val zlibSize = ByteBuffer.wrap(
+                saveData.sliceArray(databaseOffset until databaseOffset + 4)
+            ).order(ByteOrder.LITTLE_ENDIAN).int
+
+            // Get the File object and the size of each database.
+            val databases = mapOf(
+                File(dir, MAIN_DB_NAME) to ByteBuffer.wrap(
+                    saveData.sliceArray(
+                        databaseOffset + 4 until databaseOffset + 8
+                    )
+                ).order(ByteOrder.LITTLE_ENDIAN).int,
+                File(dir, BACKUP_DB_NAME) to ByteBuffer.wrap(
+                    saveData.sliceArray(
+                        databaseOffset + 8 until databaseOffset + 12
+                    )
+                ).order(ByteOrder.LITTLE_ENDIAN).int,
+                File(dir, BACKUP_DB2_NAME) to ByteBuffer.wrap(
+                    saveData.sliceArray(
+                        databaseOffset + 12 until databaseOffset + 16
+                    )
+                ).order(ByteOrder.LITTLE_ENDIAN).int
+            )
+
+            // Get the database data and decompress it.
+            val decompressedDatabase = Zlib.decompress(
+                saveData.sliceArray(databaseOffset + 16 until saveData.size)
+            ).toUByteArray()
+
+            // Write the decompressed database to the files.
+            var idx = 0
+            for ((databaseFile, databaseSize) in databases) {
+                if (databaseSize == 0) {
+                    continue
+                }
+
+                if (databaseFile.exists()) {
+                    databaseFile.delete()
+                }
+
+                val databaseData = decompressedDatabase.sliceArray(idx until idx + databaseSize)
+                databaseFile.writeBytes(databaseData.toByteArray())
+
+                idx += databaseSize
+            }
         }
     }
 }
