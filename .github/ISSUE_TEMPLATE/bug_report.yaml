@@ -1,5 +1,5 @@
 name: Bug report
-description: Create a report to help us improve F1Manager22-Save-Editor
+description: Create a report to help us improve F1Manager-Save-Editor
 title: "[Bug]: "
 labels: ["type:bug"]
 assignees: Cubik65536
@@ -80,11 +80,11 @@ body:
         examples:
           - **Operating System**: macOS Monterey 12.3
           - **Java Version**: Temurin-17.0.1+12
-          - **F1Manager22-Save-Editor Version (or Commit)**: 0.2.1 Beta (or bd259a6)
+          - **F1Manager-Save-Editor Version (or Commit)**: 0.2.1 Beta (or bd259a6)
       value: |
         - **Operating System**:
         - **Java Version**:
-        - **F1Manager22-Save-Editor Version (or Commit)**:
+        - **F1Manager-Save-Editor Version (or Commit)**:
 
   - type: markdown
     attributes:
@@ -101,9 +101,9 @@ body:
         
         Please confirm you are submitting a bug report and not a usage question.
         
-        **3. Confirm this bug still exists in the newest version of F1Manager22-Save-Editor**
+        **3. Confirm this bug still exists in the newest version of F1Manager-Save-Editor**
         
-        Please confirm that the bug still exists in the newest version (commit) of F1Manager22-Save-Editor.
+        Please confirm that the bug still exists in the newest version (commit) of F1Manager-Save-Editor.
         
         ---------
 
@@ -112,7 +112,7 @@ body:
     attributes:
       label: Please accept these terms
       options:
-        - label: I have searched the [existing issues](https://github.com/iXORTech/F1Manager22-Save-Editor/issues) and this has not been posted before
+        - label: I have searched the [existing issues](https://github.com/iXORTech/F1Manager-Save-Editor/issues) and this has not been posted before
           required: true
         - label: This is a bug report
           required: true

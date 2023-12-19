@@ -1,9 +1,9 @@
 [English](README.md) | **中文**
 
-<h1 align="center">F1Manager22-Save-Editor</h1>
+<h1 align="center">F1Manager-Save-Editor</h1>
 
 <p align="center">
-  <b>用于编辑 F1 Manager 2022 游戏存档（以编辑车手数据等）的应用</b>
+  <b>用于编辑 F1 Manager 2022/2023 游戏存档（以编辑车手数据等）的应用</b>
 </p>
 
 <p align="center">
@@ -44,7 +44,7 @@
 
 ## 📜 协议&许可证
 
-> **F1Manager22-Save-Editor 使用 [AGPL-3.0-or-later 协议](license-translations/LICENSE-zh.md)（[原文](LICENSE)）作为软件分发许可证。<br/>
+> **F1Manager-Save-Editor 使用 [AGPL-3.0-or-later 协议](license-translations/LICENSE-zh.md)（[原文](LICENSE)）作为软件分发许可证。<br/>
 用户可以更改，再分发本开源代码，进行商业使用，但必须遵守 [AGPL-3.0-or-later 协议](license-translations/LICENSE-zh.md)（[原文](LICENSE)）内容**
 
 但同时，用户不得：
@@ -55,16 +55,16 @@
   - 您应当保留在网页底部或者命令行提示处的 `由 iXOR Technology 强力驱动。` 字样，并且 `iXOR Technology` 应当始终链接到我们的网站（<https://ixor.tech>）
 
 
-- 对于 `F1Manager22-Save-Editor` 的衍生项目：
+- 对于 `F1Manager-Save-Editor` 的衍生项目：
   - 不管您是在维护一个我们项目的分支抑或是直接使用了我们的代码，您的项目应当也使用 [AGPL-3.0-or-later 协议](license-translations/LICENSE-zh.md)（[原文](LICENSE)）作为软件分发许可证。
-  - 如果您在维护一个 `F1Manager22-Save-Editor` 的分支，您可以在网页底部或者命令行提示处使用 `由 iXOR Technology 强力驱动，由 [您的名字] 更改。` 字样。而且其中的 `iXOR Technology` 字样必须指向我们的网站 (https://ixor.tech)。 否则必须保留 `由 iXOR Technology 强力驱动。` 字样。
-  - 如果你在使用 `F1Manager22-Save-Editor` 已发布的代码，不管您是否更改了代码，您都需要在您的程序描述中**明确**提及使用了本项目代码，并附上本项目的链接。您不得扭曲或隐藏本项目免费且开源的事实。
+  - 如果您在维护一个 `F1Manager-Save-Editor` 的分支，您可以在网页底部或者命令行提示处使用 `由 iXOR Technology 强力驱动，由 [您的名字] 更改。` 字样。而且其中的 `iXOR Technology` 字样必须指向我们的网站 (https://ixor.tech)。 否则必须保留 `由 iXOR Technology 强力驱动。` 字样。
+  - 如果你在使用 `F1Manager-Save-Editor` 已发布的代码，不管您是否更改了代码，您都需要在您的程序描述中**明确**提及使用了本项目代码，并附上本项目的链接。您不得扭曲或隐藏本项目免费且开源的事实。
     - 本项目链接
-      - https://github.com/iXORTech/F1Manager22-Save-Editor
+      - https://github.com/iXORTech/F1Manager-Save-Editor
 
 
 ``` text
-F1Manager22-Save-Editor - 用于编辑 F1 Manager 2022 游戏存档（以编辑车手数据等）的应用
+F1Manager-Save-Editor - 用于编辑 F1 Manager 2022/2023 游戏存档（以编辑车手数据等）的应用
 版权所有 (C) 2022-2023 iXOR Technology, Cubik65536 以及 所有贡献者。
 
 本程序为自由软件：在自由软件基金会发布的 GNU Affero 通用公共许可证的约束下，

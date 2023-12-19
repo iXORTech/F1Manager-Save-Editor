@@ -1,4 +1,4 @@
-rootProject.name = "F1Manager22-Save-Editor"
+rootProject.name = "F1Manager-Save-Editor"
 
 plugins {
     // See https://jmfayard.github.io/refreshVersions

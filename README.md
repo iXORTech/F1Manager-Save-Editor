@@ -1,9 +1,9 @@
 **English** | [中文](README-zh.md)
 
-<h1 align="center">F1Manager22-Save-Editor</h1>
+<h1 align="center">F1Manager-Save-Editor</h1>
 
 <p align="center"> 
-  <b>Application for editing F1 Manager 2022 Games Saves (for modifying drivers' stats, balance, etc)</b>
+  <b>Application for editing F1 Manager 2022/2023 Games Saves (for modifying drivers' stats, balance, etc)</b>
 </p>
 
 <p align="center">
@@ -44,7 +44,7 @@ Special Thanks to [JetBrains](https://www.jetbrains.com/?from=RemoteMC-Core) for
 
 ## 📜 License
 
-> **F1Manager22-Save-Editor uses [AGPL-3.0-or-later License](LICENSE) as software license.<br/>
+> **F1Manager-Save-Editor uses [AGPL-3.0-or-later License](LICENSE) as software license.<br/>
 Users can modify and redistribute the source code and use it for commercial proposes, but you should respect the content of [AGPL-3.0-or-later License](LICENSE)**
 
 - Use this project for any proposes that violate the laws of **The United States of America**, **Canada**, **The People's Republic of China**, and the country where the user is at.
@@ -54,16 +54,16 @@ Users can modify and redistribute the source code and use it for commercial prop
   - You should keep the `Powered by iXOR Technology with 💗.` text on the bottom of the webpages and in the command line prompt. And the `iXOR Technology` should always be linked to our website (https://ixor.tech).
 
 
-- For derived projects of `F1Manager22-Save-Editor`:
+- For derived projects of `F1Manager-Save-Editor`:
   - Your project should also be open-sourced under [AGPL-3.0-or-later License](LICENSE). Whether it is a fork of our project or another project that use our code.
-  - If you maintain a fork of `F1Manager22-Save-Editor`, you can use the `Powered by iXOR Technology with 💗, Modified by [your name].` text on the bottom of the webpages and in the command line prompt. And the `iXOR Technology` should always be linked to our website (https://ixor.tech). Otherwise, `Powered by iXOR Technology with 💗.` text should be kept.
-  - If you use `F1Manager22-Save-Editor`'s released source code for another project, whether the code have been changed or not, then you need to **clearly** mention the usage of our code and a URL to our repository in any part of the software description. The fact that our code is free and open-source must not be distorted or hidden.
+  - If you maintain a fork of `F1Manager-Save-Editor`, you can use the `Powered by iXOR Technology with 💗, Modified by [your name].` text on the bottom of the webpages and in the command line prompt. And the `iXOR Technology` should always be linked to our website (https://ixor.tech). Otherwise, `Powered by iXOR Technology with 💗.` text should be kept.
+  - If you use `F1Manager-Save-Editor`'s released source code for another project, whether the code have been changed or not, then you need to **clearly** mention the usage of our code and a URL to our repository in any part of the software description. The fact that our code is free and open-source must not be distorted or hidden.
       - URL to repositories：
-          - https://github.com/iXORTech/F1Manager22-Save-Editor
+          - https://github.com/iXORTech/F1Manager-Save-Editor
 
 
 ``` text
-F1Manager22-Save-Editor - Application for editing F1 Manager 2022 Games Saves (for modifying drivers' stats, balance, etc)
+F1Manager-Save-Editor - Application for editing F1 Manager 2022/2023 Games Saves (for modifying drivers' stats, balance, etc)
 Copyright (C) 2022-2023 iXOR Technology, Cubik65536, and contributors.
 
 This program is free software: you can redistribute it and/or modify
