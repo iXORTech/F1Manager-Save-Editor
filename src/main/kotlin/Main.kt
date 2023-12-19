@@ -1,7 +1,13 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import utils.SaveUnpacker
+import java.io.File
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+    // ONLY FOR TESTING
+    val path = readln()
+    val file = File(path)
+    if (!file.exists()) {
+        println("File does not exist!")
+        return
+    }
+    SaveUnpacker.unpackSave(file)
 }
