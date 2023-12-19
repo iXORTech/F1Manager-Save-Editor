@@ -8,6 +8,9 @@ import java.nio.ByteOrder
  * SaveUnpacker.kt
  * F1Manager-Save-Editor
  *
+ * Credit to https://github.com/xAranaktu/F1-Manager-2022-SaveFile-Repacker
+ * for implementations of this class.
+ *
  * Created by Qian Qian "Cubik" on Tuesday Dec. 19.
  *
  * Modified by Qian Qian "Cubik" on Tuesday Dec. 19.
