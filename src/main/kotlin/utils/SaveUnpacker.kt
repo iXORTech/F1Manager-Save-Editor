@@ -19,16 +19,17 @@ import java.nio.ByteOrder
  * - Unpack the database from the save file.
  */
 
+// Constants for unpacked file names.
+private const val CHUNK1_NAME = "chunk1"
+private const val MAIN_DB_NAME = "main.db"
+private const val BACKUP_DB_NAME = "backup1.db"
+private const val BACKUP_DB2_NAME = "backup2.db"
+
 /**
  * Utility class to unpack the F1 Manager save file.
  */
 class SaveUnpacker {
     companion object {
-        val CHNUK1_NAME = "chunk1"
-        val MAIN_DB_NAME = "main.db"
-        val BACKUP_DB_NAME = "backup1.db"
-        val BACKUP_DB2_NAME = "backup2.db"
-
         /**
          * Unpack the F1 Manager save file.
          * @param save The save file to unpack.
@@ -69,7 +70,7 @@ class SaveUnpacker {
             val databaseOffset = saveData.indexOf(preDatabaseSig) + preDatabaseSig.size + 4
 
             // Save to part of the save that is not the database for repacking.
-            val chunk1File = File(dir, CHNUK1_NAME)
+            val chunk1File = File(dir, CHUNK1_NAME)
             if (chunk1File.exists()) {
                 chunk1File.delete()
             }
