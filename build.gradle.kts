@@ -11,6 +11,10 @@ repositories {
 }
 
 dependencies {
+    // Logback
+    implementation("ch.qos.logback:logback-classic:_")
+
+    // Testing Dependencies
     testImplementation(kotlin("test"))
 }
 
