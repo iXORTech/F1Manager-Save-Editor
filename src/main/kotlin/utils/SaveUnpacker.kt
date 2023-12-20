@@ -44,7 +44,7 @@ class SaveUnpacker {
 
             // Backup the save file.
             println("Make sure you have a backup of your save file before proceeding!")
-            print("Do you want the program to make a backup of your save file? (y/n)")
+            print("Do you want the program to make a backup of your save file? (y/n) ")
             val backup = readln().lowercase() == "y"
             print('\n')
             if (backup) {
