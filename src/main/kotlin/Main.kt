@@ -1,4 +1,5 @@
 import utils.SaveUnpacker
+import utils.SaveRepacker
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -9,5 +10,7 @@ fun main(args: Array<String>) {
         println("File does not exist!")
         return
     }
+    val directory = file.parentFile.absolutePath
     SaveUnpacker.unpackSave(file)
+    SaveRepacker.repackSave(directory, file.name)
 }
