@@ -46,7 +46,6 @@ class SaveUnpacker {
             println("Make sure you have a backup of your save file before proceeding!")
             print("Do you want the program to make a backup of your save file? (y/n) ")
             val backup = readln().lowercase() == "y"
-            print('\n')
             if (backup) {
                 val backupFile = File(save.absolutePath + ".bak")
                 if (backupFile.exists()) {
@@ -123,6 +122,8 @@ class SaveUnpacker {
 
                 idx += databaseSize
             }
+
+            println("Unpacking save file complete!")
         }
     }
 }

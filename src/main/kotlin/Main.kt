@@ -12,5 +12,8 @@ fun main(args: Array<String>) {
     }
     val directory = file.parentFile.absolutePath
     SaveUnpacker.unpackSave(file)
-    SaveRepacker.repackSave(directory, file.name)
+    SaveRepacker.repackSave(
+        directory,
+        "${file.name.substring(0 until file.name.lastIndexOf('.'))}.repacked.sav"
+    )
 }
