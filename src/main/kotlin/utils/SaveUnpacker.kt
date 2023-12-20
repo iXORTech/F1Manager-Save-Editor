@@ -15,9 +15,9 @@ import java.nio.file.Paths
  * Created by Qian Qian "Cubik" on Tuesday Dec. 19.
  *
  * Modified by Qian Qian "Cubik" on Tuesday Dec. 19.
- * - Backup prompt and backup functionality.
- * - Unpack the chunk1 data (data that is not a part of the real database) from the save file.
- * - Unpack the database from the save file.
+ * - [ADD][feature] Backup prompt and backup functionality.
+ * - [ADD][feature] Unpack the chunk1 data (data that is not a part of the real database) from the save file.
+ * - [ADD][feature] Unpack the database from the save file.
  */
 
 // Constants for unpacked file names.
