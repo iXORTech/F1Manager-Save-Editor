@@ -3,6 +3,7 @@ package utils
 import java.io.File
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import java.nio.file.Paths
 
 /*
  * SaveUnpacker.kt
@@ -36,10 +37,10 @@ class SaveUnpacker {
          */
         @OptIn(ExperimentalUnsignedTypes::class)
         fun unpackSave(save: File) {
-            // Get path of the save file.
-            val path = save.absolutePath
             // Get the directory to save the unpacked files.
-            val dir = File(path.substring(0, path.lastIndexOf('.')))
+            val pwd = Paths.get("").toAbsolutePath().toString().plus("/unpacked_save/")
+            File(pwd).delete()
+            File(pwd).mkdir()
 
             // Backup the save file.
             println("Make sure you have a backup of your save file before proceeding!")
@@ -70,7 +71,7 @@ class SaveUnpacker {
             val databaseOffset = saveData.indexOf(preDatabaseSig) + preDatabaseSig.size + 4
 
             // Save to part of the save that is not the database for repacking.
-            val chunk1File = File(dir, CHUNK1_NAME)
+            val chunk1File = File(pwd, CHUNK1_NAME)
             if (chunk1File.exists()) {
                 chunk1File.delete()
             }
@@ -84,17 +85,17 @@ class SaveUnpacker {
 
             // Get the File object and the size of each database.
             val databases = mapOf(
-                File(dir, MAIN_DB_NAME) to ByteBuffer.wrap(
+                File(pwd, MAIN_DB_NAME) to ByteBuffer.wrap(
                     saveData.sliceArray(
                         databaseOffset + 4 until databaseOffset + 8
                     )
                 ).order(ByteOrder.LITTLE_ENDIAN).int,
-                File(dir, BACKUP_DB_NAME) to ByteBuffer.wrap(
+                File(pwd, BACKUP_DB_NAME) to ByteBuffer.wrap(
                     saveData.sliceArray(
                         databaseOffset + 8 until databaseOffset + 12
                     )
                 ).order(ByteOrder.LITTLE_ENDIAN).int,
-                File(dir, BACKUP_DB2_NAME) to ByteBuffer.wrap(
+                File(pwd, BACKUP_DB2_NAME) to ByteBuffer.wrap(
                     saveData.sliceArray(
                         databaseOffset + 12 until databaseOffset + 16
                     )
