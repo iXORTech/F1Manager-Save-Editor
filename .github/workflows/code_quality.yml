@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - main
-      - feat/*
-      - fix/*
+#      - feat/*
+#      - fix/*
 
 jobs:
   qodana:
