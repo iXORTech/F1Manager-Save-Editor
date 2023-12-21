@@ -29,3 +29,8 @@ fun ByteArray.indexOf(element: ByteArray): Int {
     }
     return -1
 }
+
+@ExperimentalUnsignedTypes
+fun ByteArray.toHexString() = "\\x" + asUByteArray().joinToString("\\x") {
+    it.toString(16).uppercase().padStart(2, '0')
+}

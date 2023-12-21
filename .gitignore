@@ -41,5 +41,8 @@ bin/
 ### Mac OS ###
 .DS_Store
 
+### Logs ###
+*.log
+
 ### Runtime Generated Files ###
 /unpacked_save
