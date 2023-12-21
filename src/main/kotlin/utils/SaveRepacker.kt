@@ -18,6 +18,9 @@ import extensions.*
  *
  * Modified by Qian Qian "Cubik" on Tuesday Dec. 19.
  * - [ADD][feature] Repack the save file.
+ *
+ * Modified by Qian Qian "Cubik" on Thursday Dec. 21.
+ * - [ADD][chore] Add logging.
  */
 
 // Constants for unpacked file names.

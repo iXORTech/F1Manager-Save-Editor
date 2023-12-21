@@ -7,6 +7,22 @@ import java.util.zip.Inflater
 
 import extensions.*
 
+/*
+ * Zlib.kt
+ * F1Manager-Save-Editor
+ *
+ * Credit to https://gist.github.com/marcouberti/40dbbd836562b35ace7fb2c627b0f34f
+ * for implementations of this class.
+ *
+ * Created by Qian Qian "Cubik" on Tuesday Dec. 19.
+ *
+ * Modified by Qian Qian "Cubik" on Tuesday Dec. 19.
+ * - [ADD][feature] Add ZLIB compression and decompression.
+ *
+ * * Modified by Qian Qian "Cubik" on Thursday Dec. 21.
+ * - [ADD][chore] Add logging.
+ */
+
 class Zlib {
     companion object {
         private val logger = LoggerFactory.getLogger(javaClass)

@@ -21,6 +21,9 @@ import extensions.*
  * - [ADD][feature] Backup prompt and backup functionality.
  * - [ADD][feature] Unpack the chunk1 data (data that is not a part of the real database) from the save file.
  * - [ADD][feature] Unpack the database from the save file.
+ *
+ * * Modified by Qian Qian "Cubik" on Thursday Dec. 21.
+ * - [ADD][chore] Add logging.
  */
 
 // Constants for unpacked file names.
