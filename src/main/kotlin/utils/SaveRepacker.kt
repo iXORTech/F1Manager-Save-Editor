@@ -1,8 +1,11 @@
 package utils
 
 import exceptions.UnpackedSaveNotFoundException
+import org.slf4j.LoggerFactory
 import java.io.File
 import java.nio.file.Paths
+
+import extensions.*
 
 /*
  * SaveRepacker.kt
@@ -28,6 +31,8 @@ private const val BACKUP_DB2_NAME = "backup2.db"
  */
 class SaveRepacker {
     companion object {
+        private val logger = LoggerFactory.getLogger(javaClass)
+
         /**
          * Write an integer to a ByteArray.
          * @param offset The offset to write the integer to.
@@ -47,22 +52,29 @@ class SaveRepacker {
          * @param databaseDatas The database data to compress.
          * @return The compressed database data.
          */
+        @OptIn(ExperimentalUnsignedTypes::class)
         private fun getCompressedDatabase(databaseDatas: List<ByteArray>): List<ByteArray> {
+            logger.debug("Compressing database data.")
             val data: MutableList<ByteArray> = mutableListOf()
 
             val dbSizes: MutableList<Int> = mutableListOf()
             var dataToCompress = byteArrayOf()
 
             for (databaseData in databaseDatas) {
-                dbSizes.add(databaseData.size)
+                val size = databaseData.size
+                logger.debug("Compressing database data of size $size.")
+                logger.trace("databaseData = ${databaseData.toHexString()}")
+                dbSizes.add(size)
                 dataToCompress = dataToCompress.plus(databaseData)
             }
 
             val compressedData = Zlib.compress(dataToCompress)
+            logger.debug("Compressed database data of size ${dataToCompress.size} to ${compressedData.size}.")
+            logger.trace("compressedData = ${compressedData.toHexString()}")
 
             data.add(write4BytesToBuffer(0, compressedData.size))
-            for (i in dbSizes.indices) {
-                data.add(write4BytesToBuffer(0, dbSizes[i]))
+            for (dbSize in dbSizes) {
+                data.add(write4BytesToBuffer(0, dbSize))
             }
             data.add(compressedData)
 
@@ -74,14 +86,18 @@ class SaveRepacker {
          * @param target The target directory to save the repacked save file.
          * @param name The name of the repacked save file.
          */
+        @OptIn(ExperimentalUnsignedTypes::class)
         fun repackSave(target: String, name: String) {
+            logger.debug("Repacking save file to $target/$name.")
             println("Repacking save file...")
 
             // Check if the unpacked save files exist.
+            logger.debug("Checking if unpacked save files exist.")
             val pwd = Paths.get("").toAbsolutePath().toString().plus("/unpacked_save/")
             if (!File(pwd).exists()) {
                 throw UnpackedSaveNotFoundException()
             }
+            logger.debug("Unpacked save files found at $pwd.")
 
             // Get the unpacked save files.
             val chunk1File = File(pwd + CHUNK1_NAME)
@@ -93,26 +109,40 @@ class SaveRepacker {
             var newSaveData: ByteArray = byteArrayOf()
 
             newSaveData = if (chunk1File.exists()) {
-                newSaveData.plus(chunk1File.readBytes())
+                val chunk1Data = chunk1File.readBytes()
+                logger.debug("Read ${chunk1Data.size} bytes from $CHUNK1_NAME.")
+                logger.trace("chunk1Data = ${chunk1Data.toHexString()}")
+                newSaveData.plus(chunk1Data)
             } else {
                 throw UnpackedSaveNotFoundException()
             }
 
             val mainDbData = if (mainDbFile.exists()) {
-                mainDbFile.readBytes()
+                val data = mainDbFile.readBytes()
+                logger.debug("Read ${data.size} bytes from $MAIN_DB_NAME.")
+                logger.trace("mainDbData = ${data.toHexString()}")
+                data
             } else {
                 throw UnpackedSaveNotFoundException()
             }
 
             val backupDbData = if (backupDbFile.exists()) {
-                backupDbFile.readBytes()
+                val data = backupDbFile.readBytes()
+                logger.debug("Read ${data.size} bytes from $BACKUP_DB_NAME.")
+                logger.trace("backupDbData = ${data.toHexString()}")
+                data
             } else {
+                logger.debug("No $BACKUP_DB_NAME found. Write empty ByteArray.")
                 byteArrayOf()
             }
 
             val backupDb2Data = if (backupDb2File.exists()) {
-                backupDb2File.readBytes()
+                val data = backupDb2File.readBytes()
+                logger.debug("Read ${data.size} bytes from $BACKUP_DB2_NAME.")
+                logger.trace("backupDb2Data = ${data.toHexString()}")
+                data
             } else {
+                logger.debug("No $BACKUP_DB2_NAME found. Write empty ByteArray.")
                 byteArrayOf()
             }
 
@@ -128,6 +158,8 @@ class SaveRepacker {
             for (database in compressedDatabase) {
                 newSaveData += database
             }
+            logger.debug("New Save Data Generated. size = ${newSaveData.size}")
+            logger.debug("newSaveData size = ${newSaveData.size}")
 
             // Write new save data to save file.
             val saveFile = File(target, name)
@@ -135,8 +167,10 @@ class SaveRepacker {
                 saveFile.delete()
             }
             saveFile.writeBytes(newSaveData)
+            logger.debug("Wrote ${newSaveData.size} bytes to ${saveFile.absolutePath}.")
 
             println("Save file repacked!")
+            logger.debug("Successfully repacked save file to ${saveFile.absolutePath}.")
         }
     }
 }
