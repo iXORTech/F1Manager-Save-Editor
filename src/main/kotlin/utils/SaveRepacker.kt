@@ -162,7 +162,7 @@ class SaveRepacker {
                 newSaveData += database
             }
             logger.debug("New Save Data Generated. size = ${newSaveData.size}")
-            logger.debug("newSaveData size = ${newSaveData.size}")
+            logger.trace("newSaveData = ${newSaveData.toHexString()}")
 
             // Write new save data to save file.
             val saveFile = File(target, name)
