@@ -37,7 +37,7 @@ private const val BACKUP_DB2_NAME = "backup2.db"
  */
 class SaveUnpacker {
     companion object {
-        private val logger = LoggerFactory.getLogger(javaClass)
+        private val logger = LoggerFactory.getLogger(SaveUnpacker::class.java)
 
         /**
          * Unpack the F1 Manager save file.

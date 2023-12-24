@@ -34,7 +34,7 @@ private const val BACKUP_DB2_NAME = "backup2.db"
  */
 class SaveRepacker {
     companion object {
-        private val logger = LoggerFactory.getLogger(javaClass)
+        private val logger = LoggerFactory.getLogger(SaveUnpacker::class.java)
 
         /**
          * Write an integer to a ByteArray.
