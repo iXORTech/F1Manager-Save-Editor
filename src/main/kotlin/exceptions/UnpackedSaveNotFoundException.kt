@@ -8,6 +8,6 @@ package exceptions
  */
 
 class UnpackedSaveNotFoundException : Exception() {
-    override val message: String?
+    override val message: String
         get() = "Cannot find unpacked save file under the current directory."
 }
