@@ -37,20 +37,6 @@ class SaveRepacker {
         private val logger = LoggerFactory.getLogger(SaveUnpacker::class.java)
 
         /**
-         * Write an integer to a ByteArray.
-         * @param offset The offset to write the integer to.
-         * @param data The integer to write.
-         */
-        private fun write4BytesToBuffer(offset: Int, data: Int): ByteArray {
-            val buffer = ByteArray(4)
-            buffer[offset + 0] = (data shr 0).toByte()
-            buffer[offset + 1] = (data shr 8).toByte()
-            buffer[offset + 2] = (data shr 16).toByte()
-            buffer[offset + 3] = (data shr 24).toByte()
-            return buffer
-        }
-
-        /**
          * Get the compressed byte data of the database.
          * @param databaseDatas The database data to compress.
          * @return The compressed database data.
@@ -75,9 +61,9 @@ class SaveRepacker {
             logger.debug("Compressed database data of size ${dataToCompress.size} to ${compressedData.size}.")
             logger.trace("compressedData = ${compressedData.toHexString()}")
 
-            data.add(write4BytesToBuffer(0, compressedData.size))
+            data.add(compressedData.size.toByteArray())
             for (dbSize in dbSizes) {
-                data.add(write4BytesToBuffer(0, dbSize))
+                data.add(dbSize.toByteArray())
             }
             data.add(compressedData)
 
