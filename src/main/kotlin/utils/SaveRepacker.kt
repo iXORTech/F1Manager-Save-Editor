@@ -71,7 +71,7 @@ class SaveRepacker {
                 dataToCompress = dataToCompress.plus(databaseData)
             }
 
-            val compressedData = Zlib.compress(dataToCompress)
+            val compressedData = dataToCompress.compress()
             logger.debug("Compressed database data of size ${dataToCompress.size} to ${compressedData.size}.")
             logger.trace("compressedData = ${compressedData.toHexString()}")
 

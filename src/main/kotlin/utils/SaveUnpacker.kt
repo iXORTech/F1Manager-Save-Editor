@@ -128,9 +128,9 @@ class SaveUnpacker {
             }
 
             // Get the database data and decompress it.
-            val decompressedDatabase = Zlib.decompress(
-                saveData.sliceArray(databaseOffset + 16 until saveData.size)
-            ).toUByteArray()
+            val decompressedDatabase = saveData
+                .sliceArray(databaseOffset + 16 until saveData.size)
+                .decompress().toUByteArray()
             logger.debug("database decompressed. size = ${decompressedDatabase.size}")
 
             // Write the decompressed database to the files.
