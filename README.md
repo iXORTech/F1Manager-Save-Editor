@@ -64,7 +64,7 @@ Users can modify and redistribute the source code and use it for commercial prop
 
 ``` text
 F1Manager-Save-Editor - Application for editing F1 Manager 2022/2023 Games Saves (for modifying drivers' stats, balance, etc)
-Copyright (C) 2022-2023 iXOR Technology, Cubik65536, and contributors.
+Copyright (C) 2022-2024 iXOR Technology, Cubik65536, and contributors.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published

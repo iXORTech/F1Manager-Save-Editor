@@ -65,7 +65,7 @@
 
 ``` text
 F1Manager-Save-Editor - 用于编辑 F1 Manager 2022/2023 游戏存档（以编辑车手数据等）的应用
-版权所有 (C) 2022-2023 iXOR Technology, Cubik65536 以及 所有贡献者。
+版权所有 (C) 2022-2024 iXOR Technology, Cubik65536 以及 所有贡献者。
 
 本程序为自由软件：在自由软件基金会发布的 GNU Affero 通用公共许可证的约束下，
 你可以对其进行再分发及修改。许可证版本为第三版或（你可选的）后续版本。
