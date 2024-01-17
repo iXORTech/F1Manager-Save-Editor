@@ -30,6 +30,16 @@ val stageProperty: String
 val revisionProperty: String
     get() = runShellCommand("git rev-parse --short=7 HEAD")
 
+val shadowJarVersion: String
+    get() {
+        var result = versionProperty
+        if (stageProperty == "SNAPSHOT" || stageProperty == "alpha" || stageProperty == "beta" || stageProperty == "rc") {
+            result += "-$stageProperty"
+        }
+        result += "+$revisionProperty"
+        return result
+    }
+
 plugins {
     kotlin("jvm") version "1.8.0"
     id("com.github.johnrengelman.shadow")
@@ -53,6 +63,12 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.shadowJar {
+    destinationDirectory.set(file("${projectDir}/build/distributions"))
+    archiveVersion.set(shadowJarVersion)
+    archiveClassifier.set("")
 }
 
 kotlin {
