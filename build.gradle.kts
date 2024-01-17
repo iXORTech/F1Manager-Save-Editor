@@ -32,6 +32,7 @@ val revisionProperty: String
 
 plugins {
     kotlin("jvm") version "1.8.0"
+    id("com.github.johnrengelman.shadow")
     application
 }
 
