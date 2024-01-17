@@ -1,5 +1,8 @@
 import java.io.ByteArrayOutputStream
 import java.io.FileInputStream
+import java.time.format.DateTimeFormatter
+import java.time.ZonedDateTime
+import java.time.ZoneId
 import java.util.Properties
 
 val projectProperties = "${projectDir}/project.properties"
@@ -30,6 +33,20 @@ val stageProperty: String
 val revisionProperty: String
     get() = runShellCommand("git rev-parse --short=7 HEAD")
 
+val writeProjectProperties by tasks.registering(WriteProperties::class) {
+    destinationFile = file("${projectDir}/src/main/resources/version.properties")
+    encoding = "UTF-8"
+    property("version", versionProperty)
+    property("stage", stageProperty)
+    property("revision", revisionProperty)
+    property(
+        "buildDate",
+        ZonedDateTime
+            .now(ZoneId.of("UTC"))
+            .format(DateTimeFormatter.ofPattern("E, MMM dd yyyy"))
+    )
+}
+
 val shadowJarVersion: String
     get() {
         var result = versionProperty
@@ -59,6 +76,11 @@ dependencies {
 
     // Testing Dependencies
     testImplementation(kotlin("test"))
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(writeProjectProperties)
 }
 
 tasks.test {
