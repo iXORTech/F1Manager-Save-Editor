@@ -46,3 +46,6 @@ bin/
 
 ### Runtime Generated Files ###
 /unpacked_save
+
+### Building Generated Files ###
+/src/main/resources/version.properties
