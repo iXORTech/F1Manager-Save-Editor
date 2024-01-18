@@ -50,7 +50,8 @@ val writeProjectProperties by tasks.registering(WriteProperties::class) {
 val shadowJarVersion: String
     get() {
         var result = versionProperty
-        if (stageProperty == "SNAPSHOT" || stageProperty == "alpha" || stageProperty == "beta" || stageProperty == "rc") {
+        if (stageProperty == "SNAPSHOT" || stageProperty.startsWith("alpha")
+            || stageProperty.startsWith("beta") || stageProperty.startsWith("rc")) {
             result += "-$stageProperty"
         }
         result += "+$revisionProperty"
