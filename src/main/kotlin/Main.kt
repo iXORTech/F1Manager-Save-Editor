@@ -1,7 +1,6 @@
 import exceptions.UnpackedSaveNotFoundException
 import org.slf4j.LoggerFactory
-import utils.SaveUnpacker
-import utils.SaveRepacker
+import utils.SaveUtils
 import utils.VersionUtils
 import java.io.File
 import kotlin.system.exitProcess
@@ -37,7 +36,7 @@ fun main(args: Array<String>) {
         val path = readln()
         saveFile = File(path)
         directory = saveFile.parentFile.absolutePath
-        SaveUnpacker.unpackSave(saveFile)
+        SaveUtils.SaveUnpacker.unpackSave(saveFile)
     } catch (unpackedSaveNotFoundException: UnpackedSaveNotFoundException) {
         val message = "UnpackedSaveNotFoundException: ${unpackedSaveNotFoundException.message}"
         logger.error(message)
@@ -47,7 +46,7 @@ fun main(args: Array<String>) {
         exitProcess(1)
     }
 
-    SaveRepacker.repackSave(
+    SaveUtils.SaveRepacker.repackSave(
         directory,
         "${saveFile.name.substring(0 until saveFile.name.lastIndexOf('.'))}.repacked.sav"
     )
