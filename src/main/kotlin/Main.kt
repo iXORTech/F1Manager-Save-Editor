@@ -4,6 +4,7 @@ import utils.SaveUnpacker
 import utils.SaveRepacker
 import utils.VersionUtils
 import java.io.File
+import kotlin.system.exitProcess
 
 private val logger = LoggerFactory.getLogger("F1Manager-Save-Editor")
 
@@ -28,20 +29,28 @@ fun main(args: Array<String>) {
         )
     }
 
+    val saveFile: File
+    val directory: String
+
     try {
-        // ONLY FOR TESTING
+        print("Enter the path to your F1 2022/2023 save file: ")
         val path = readln()
-        val file = File(path)
-        val directory = file.parentFile.absolutePath
-        SaveUnpacker.unpackSave(file)
-        SaveRepacker.repackSave(
-            directory,
-            "${file.name.substring(0 until file.name.lastIndexOf('.'))}.repacked.sav"
-        )
+        saveFile = File(path)
+        directory = saveFile.parentFile.absolutePath
+        SaveUnpacker.unpackSave(saveFile)
     } catch (unpackedSaveNotFoundException: UnpackedSaveNotFoundException) {
         val message = "UnpackedSaveNotFoundException: ${unpackedSaveNotFoundException.message}"
         logger.error(message)
+        exitProcess(1)
     } catch (exception: Exception) {
         logger.error("An unexpected error occurred.", exception)
+        exitProcess(1)
     }
+
+    SaveRepacker.repackSave(
+        directory,
+        "${saveFile.name.substring(0 until saveFile.name.lastIndexOf('.'))}.repacked.sav"
+    )
+
+    println("Thank you for using F1Manager-Save-Editor! Have a nice day!")
 }
