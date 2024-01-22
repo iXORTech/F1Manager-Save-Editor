@@ -35,7 +35,6 @@ class SaveUtils(val save: Save) {
 
         /**
          * Unpack the F1 Manager save file.
-         * @param save The save file to unpack.
          */
         @OptIn(ExperimentalUnsignedTypes::class)
         fun unpackSave() {
@@ -193,8 +192,6 @@ class SaveUtils(val save: Save) {
 
         /**
          * Repack the F1 Manager save file.
-         * @param target The target directory to save the repacked save file.
-         * @param name The name of the repacked save file.
          */
         @OptIn(ExperimentalUnsignedTypes::class)
         fun repackSave(fileName: String) {
