@@ -197,9 +197,8 @@ class SaveUtils(val save: Save) {
          * @param name The name of the repacked save file.
          */
         @OptIn(ExperimentalUnsignedTypes::class)
-        fun repackSave() {
-            val repackedSaveFile = save.directory +
-                    "/${save.file.name.substring(0 until save.file.name.lastIndexOf('.'))}.repacked.sav"
+        fun repackSave(fileName: String) {
+            val repackedSaveFile = "${save.directory}/$fileName"
 
             logger.debug("Repacking save file to $repackedSaveFile.")
             println("Repacking save file...")

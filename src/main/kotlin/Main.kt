@@ -50,7 +50,12 @@ fun main(args: Array<String>) {
     val mainUI = MainUI(save)
     mainUI.ui()
 
-    save.repack()
+    print("Do you want to overwrite your original save file? (y/n) ")
+    if (readln().lowercase() == "n") {
+        save.repack("${save.file.name.substring(0 until save.file.name.lastIndexOf('.'))}.repacked.sav")
+    } else {
+        save.repack()
+    }
 
     println("Thank you for using F1Manager-Save-Editor! Have a nice day!")
 }

@@ -40,7 +40,7 @@ class Save(path: String) {
     /**
      * Repacks the save file.
      */
-    fun repack() {
-        util.SaveRepacker().repackSave()
+    fun repack(fileName: String = file.name) {
+        util.SaveRepacker().repackSave(fileName)
     }
 }
