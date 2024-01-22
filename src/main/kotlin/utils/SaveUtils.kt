@@ -1,5 +1,6 @@
 package utils
 
+import dto.Save
 import exceptions.UnpackedSaveNotFoundException
 import extensions.*
 import org.slf4j.LoggerFactory
@@ -25,7 +26,7 @@ private const val MAIN_DB_NAME = "main.db"
 private const val BACKUP_DB_NAME = "backup1.db"
 private const val BACKUP_DB2_NAME = "backup2.db"
 
-class SaveUtils(val save: File) {
+class SaveUtils(val save: Save) {
     /**
      * Utility class to unpack the F1 Manager save file.
      */
@@ -43,20 +44,20 @@ class SaveUtils(val save: File) {
             File(pwd).delete()
             File(pwd).mkdir()
 
-            logger.debug("Unpacking save file from ${save.absolutePath} to $pwd.")
+            logger.debug("Unpacking save file from ${save.file.absolutePath} to $pwd.")
 
             // Backup the save file.
             println("Make sure you have a backup of your save file before proceeding!")
             print("Do you want the program to make a backup of your save file? (y/n) ")
             val backup = readln().lowercase() == "y"
             if (backup) {
-                logger.debug("Making backup of save file ${save.absolutePath}.")
+                logger.debug("Making backup of save file ${save.file.absolutePath}.")
                 println("Making backup...")
-                val backupFile = File(save.absolutePath + ".bak")
+                val backupFile = File(save.file.absolutePath + ".bak")
                 if (backupFile.exists()) {
                     backupFile.delete()
                 }
-                save.copyTo(backupFile)
+                save.file.copyTo(backupFile)
                 println("Backup complete!")
                 logger.debug("Backup complete!")
             } else {
@@ -67,7 +68,7 @@ class SaveUtils(val save: File) {
             println("Unpacking save file...")
 
             // Read the save file.
-            val saveData = save.readBytes()
+            val saveData = save.file.readBytes()
             logger.debug("Read ${saveData.size} bytes from save file.")
 
             // Signature before the packed database.
@@ -146,7 +147,7 @@ class SaveUtils(val save: File) {
             }
 
             println("Unpacking save file complete!")
-            logger.debug("Successfully unpacked save file ${save.absolutePath} to $pwd.")
+            logger.debug("Successfully unpacked save file ${save.file.absolutePath} to $pwd.")
         }
     }
 
@@ -197,8 +198,8 @@ class SaveUtils(val save: File) {
          */
         @OptIn(ExperimentalUnsignedTypes::class)
         fun repackSave() {
-            val repackedSaveFile = save.parentFile.absolutePath +
-                    "/${save.name.substring(0 until save.name.lastIndexOf('.'))}.repacked.sav"
+            val repackedSaveFile = save.directory +
+                    "/${save.file.name.substring(0 until save.file.name.lastIndexOf('.'))}.repacked.sav"
 
             logger.debug("Repacking save file to $repackedSaveFile.")
             println("Repacking save file...")

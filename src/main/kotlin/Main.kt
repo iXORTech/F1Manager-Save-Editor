@@ -1,3 +1,4 @@
+import dto.Save
 import exceptions.UnpackedSaveNotFoundException
 import org.slf4j.LoggerFactory
 import utils.SaveUtils
@@ -28,13 +29,14 @@ fun main(args: Array<String>) {
         )
     }
 
-    val saveUtils: SaveUtils
+    print("Enter the path to your F1 2022/2023 save file: ")
+    val path = readln()
+
+    val save: Save
 
     try {
-        print("Enter the path to your F1 2022/2023 save file: ")
-        val path = readln()
-        saveUtils = SaveUtils(File(path))
-        saveUtils.SaveUnpacker().unpackSave()
+        save = Save(path)
+        save.unpack()
     } catch (unpackedSaveNotFoundException: UnpackedSaveNotFoundException) {
         val message = "UnpackedSaveNotFoundException: ${unpackedSaveNotFoundException.message}"
         logger.error(message)
@@ -44,7 +46,7 @@ fun main(args: Array<String>) {
         exitProcess(1)
     }
 
-    saveUtils.SaveRepacker().repackSave()
+    save.repack()
 
     println("Thank you for using F1Manager-Save-Editor! Have a nice day!")
 }
