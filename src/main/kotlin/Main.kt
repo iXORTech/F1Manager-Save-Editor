@@ -28,15 +28,13 @@ fun main(args: Array<String>) {
         )
     }
 
-    val saveFile: File
-    val directory: String
+    val saveUtils: SaveUtils
 
     try {
         print("Enter the path to your F1 2022/2023 save file: ")
         val path = readln()
-        saveFile = File(path)
-        directory = saveFile.parentFile.absolutePath
-        SaveUtils.SaveUnpacker.unpackSave(saveFile)
+        saveUtils = SaveUtils(File(path))
+        saveUtils.SaveUnpacker().unpackSave()
     } catch (unpackedSaveNotFoundException: UnpackedSaveNotFoundException) {
         val message = "UnpackedSaveNotFoundException: ${unpackedSaveNotFoundException.message}"
         logger.error(message)
@@ -46,10 +44,7 @@ fun main(args: Array<String>) {
         exitProcess(1)
     }
 
-    SaveUtils.SaveRepacker.repackSave(
-        directory,
-        "${saveFile.name.substring(0 until saveFile.name.lastIndexOf('.'))}.repacked.sav"
-    )
+    saveUtils.SaveRepacker().repackSave()
 
     println("Thank you for using F1Manager-Save-Editor! Have a nice day!")
 }
