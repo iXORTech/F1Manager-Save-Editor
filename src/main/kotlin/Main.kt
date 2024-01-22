@@ -1,9 +1,11 @@
+import dto.Save
 import exceptions.UnpackedSaveNotFoundException
 import org.slf4j.LoggerFactory
-import utils.SaveUnpacker
-import utils.SaveRepacker
+import ui.MainUI
+import utils.SaveUtils
 import utils.VersionUtils
 import java.io.File
+import kotlin.system.exitProcess
 
 private val logger = LoggerFactory.getLogger("F1Manager-Save-Editor")
 
@@ -28,20 +30,32 @@ fun main(args: Array<String>) {
         )
     }
 
+    print("Enter the path to your F1 2022/2023 save file: ")
+    val path = readln()
+
+    val save: Save
+
     try {
-        // ONLY FOR TESTING
-        val path = readln()
-        val file = File(path)
-        val directory = file.parentFile.absolutePath
-        SaveUnpacker.unpackSave(file)
-        SaveRepacker.repackSave(
-            directory,
-            "${file.name.substring(0 until file.name.lastIndexOf('.'))}.repacked.sav"
-        )
+        save = Save(path)
+        save.unpack()
     } catch (unpackedSaveNotFoundException: UnpackedSaveNotFoundException) {
         val message = "UnpackedSaveNotFoundException: ${unpackedSaveNotFoundException.message}"
         logger.error(message)
+        exitProcess(1)
     } catch (exception: Exception) {
         logger.error("An unexpected error occurred.", exception)
+        exitProcess(1)
     }
+
+    val mainUI = MainUI(save)
+    mainUI.ui()
+
+    print("Do you want to overwrite your original save file? (y/n) ")
+    if (readln().lowercase() == "n") {
+        save.repack("${save.file.name.substring(0 until save.file.name.lastIndexOf('.'))}.repacked.sav")
+    } else {
+        save.repack()
+    }
+
+    println("Thank you for using F1Manager-Save-Editor! Have a nice day!")
 }
