@@ -1,6 +1,7 @@
 import dto.Save
 import exceptions.UnpackedSaveNotFoundException
 import org.slf4j.LoggerFactory
+import ui.MainUI
 import utils.SaveUtils
 import utils.VersionUtils
 import java.io.File
@@ -45,6 +46,9 @@ fun main(args: Array<String>) {
         logger.error("An unexpected error occurred.", exception)
         exitProcess(1)
     }
+
+    val mainUI = MainUI(save)
+    mainUI.ui()
 
     save.repack()
 
